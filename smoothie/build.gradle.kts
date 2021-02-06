@@ -1,4 +1,7 @@
-apply plugin: 'com.android.library'
+plugins {
+  id("com.android.library")
+  id("gradle-mvn-push")
+}
 
 repositories {
   google()
@@ -37,5 +40,3 @@ dependencies {
   testImplementation deps.robolectric
   testImplementation deps.androidx_test_core
 }
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

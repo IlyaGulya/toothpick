@@ -1,4 +1,5 @@
 apply plugin: 'java-library'
+apply plugin: 'gradle-mvn-push'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -10,5 +11,3 @@ dependencies {
   testImplementation deps.mockito
   testAnnotationProcessor project(':toothpick-compiler')
 }
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

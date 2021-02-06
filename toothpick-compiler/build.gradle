@@ -1,6 +1,7 @@
-import org.gradle.internal.jvm.Jvm
+//import org.gradle.internal.jvm.Jvm
 
 apply plugin: 'java-library'
+apply plugin: 'gradle-mvn-push'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
@@ -13,7 +14,5 @@ dependencies {
   testImplementation deps.junit4
   testImplementation deps.truth
   testImplementation deps.compiletesting
-  testImplementation files(Jvm.current().getToolsJar())
+//  testImplementation files(Jvm.current().getToolsJar())
 }
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

@@ -1,7 +1,7 @@
 * Add tests if possible
 * Run quality checks locally:
   ```bash
-  ./gradlew clean check && ./gradlew -b toothpick-sample/build.gradle clean check
+  ./gradlew clean check && ./gradlew -b toothpick-sample/build.gradle.kts clean check
   ```
 * Use `./gradlew spotlessApply` to format the code
 * Just publish a normal PR

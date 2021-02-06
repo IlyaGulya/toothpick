@@ -1,7 +1,5 @@
 apply plugin: 'java-library'
+apply plugin: 'gradle-mvn-push'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-
-
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

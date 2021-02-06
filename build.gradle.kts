@@ -1,0 +1,116 @@
+plugins {
+  `kotlin-dsl`
+  `jacoco`
+  id("com.github.kt3k.coveralls")
+}
+
+repositories {
+  jcenter()
+}
+
+//from https://gist.github.com/aalmiray/e6f54aa4b3803be0bcac
+//task jacocoTestReport {
+//  doLast {
+//    FileCollection executionData = files()
+//
+//    subprojects.findAll { subproject ->
+//      subproject.pluginManager.hasPlugin('java') && subproject.pluginManager.hasPlugin('jacoco')
+//    }.each { subproject -> executionData += subproject.tasks.jacocoTestReport.executionData
+//    }
+//
+//    executionData = files(executionData.findAll {
+//      it.exists()
+//    })
+//
+//    ant.taskdef(name: 'jacocoReport', classname: 'org.jacoco.ant.ReportTask',
+//        classpath: configurations.jacocoAnt.asPath)
+//
+//    ant.jacocoReport {
+//      executiondata {
+//        executionData.addToAntBuilder(ant, 'resources')
+//      }
+//      structure(name: project.name) {
+//        subprojects.findAll { subproject -> subproject.pluginManager.hasPlugin('java')
+//        }.each { subproject ->
+//          group(name: subproject.name) {
+//            classfiles {
+//              ((FileCollection) subproject.sourceSets.main.output).filter {
+//                it.exists()
+//              }.addToAntBuilder(ant, 'resources')
+//            }
+//            sourcefiles {
+//              files((Set<File>) subproject.sourceSets.main.allJava.srcDirs).filter {
+//                it.exists()
+//              }.addToAntBuilder(ant, 'resources')
+//            }
+//          }
+//        }
+//      }
+//      html(destdir: "${buildDir}/reports/jacoco/${name}/html")
+//      xml(destfile: "${buildDir}/reports/jacoco/${name}/${name}.xml")
+//      // Uncomment for CSV
+//      //csv(destfile: "${buildDir}/reports/jacoco/${name}/${name}.csv")
+//    }
+//  }
+//}
+
+//coveralls {
+//  jacocoReportPath = 'build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'
+//  sourceDirs = files(subprojects.collect { subproject -> "${subproject.projectDir}/src/main/java" }).files.absolutePath
+//}
+//
+//tasks.coveralls {
+//  dependsOn 'jacocoTestReport'
+//}
+//
+//subprojects { project ->
+//  group = GROUP
+//  version = VERSION_NAME
+//
+//  repositories {
+//    jcenter()
+//  }
+//
+//  apply plugin: 'jacoco'
+//  apply plugin: 'maven'
+//  apply plugin: 'com.diffplug.gradle.spotless'
+//
+//  tasks.withType(JavaCompile) {
+//    options.compilerArgs << '-Xlint:unchecked'
+//    options.deprecation = true
+//  }
+//
+//  spotless {
+//    java {
+//      licenseHeaderFile rootProject.file('spotless.license.java.txt')
+//      googleJavaFormat() // use a specific formatter for Java files
+//      target '**/*.java'
+//    }
+//    kotlin {
+//      // optionally takes a version
+//      ktlint().userData(['indent_size': '2'])
+//      target '**/*.kt'
+//
+//      // also supports license headers
+//      licenseHeaderFile rootProject.file('spotless.license.java.txt')
+//    }
+//  }
+//
+//  afterEvaluate {
+//    if (project.tasks.findByName('check') && project.pluginManager.hasPlugin('java')) {
+//      check.dependsOn('spotlessCheck')
+//      check.dependsOn('jacocoTestReport')
+//
+//      tasks.withType(Test) {
+//
+//        testLogging {
+//          events "passed", "skipped", "failed"
+//        }
+//        // ensure tasks don't overwrite the default report directories used by the 'test' task
+//        reports.html.setDestination(new File("${buildDir}/reports/${name}"))
+//        reports.junitXml.setDestination(new File("${buildDir}/reports/${name}/results"))
+//        binResultsDir = file("${buildDir}/reports/${name}/results/binary/${name}")
+//      }
+//    }
+//  }
+//}
